@@ -1,7 +1,7 @@
 # Minor WebDev | Web Of Things
 Dave Bitter | 500710907
 
-    V 1.0.2
+    V 1.0.0
 
 ## General
 This repository holds the seperate exercises for the course 'Web Of Things', part of the minor "Webdevelopment" at the [HvA](http://www.hva.nl/)
