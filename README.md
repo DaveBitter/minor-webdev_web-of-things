@@ -40,6 +40,8 @@ Clean clientside build.js file
 ## Wishlist
 * Implement dashboard for queue system.
 
+Possible Example
+[![Example Dashboard](https://s8.postimg.org/e7mttllit/queue_dashboard.jpg)](https://postimg.org/image/4zulcwegh/)
 
 ## License
 [MIT](LICENSE.md)
