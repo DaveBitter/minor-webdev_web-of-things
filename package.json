@@ -1,0 +1,31 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./app.js",
+  "scripts": {
+    "clean": "rm -rf ./public/js/build.js",
+    "watch": "watchify ./client/app.js -o ./public/js/build.js",
+    "build": "browserify ./client/app.js -o ./public/js/build.js",
+    "start": "nodemon -e js & npm run watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaveBitter/minor-webdev_web-of-things.git"
+  },
+  "author": "Dave Bitter <daveybitter@gmail.com> (http://github.com/davebitter)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DaveBitter/minor-webdev_web-of-things/issues"
+  },
+  "homepage": "https://github.com/DaveBitter/minor-webdev_web-of-things#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "browserify": "^14.1.0",
+    "nodemon": "^1.11.0",
+    "watchify": "^3.9.0"
+  }
+}
