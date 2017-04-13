@@ -15,13 +15,13 @@ We highly encourage adding issues to this repo in the case of finding one. We ar
 ### Clone this repo, duh
     git clone https://github.com/DaveBitter/minor-webdev_web-of-thingsreal-time-web.git
     cd minor-webdev_web-of-things
-   
+
 ### Install the dependencies
     npm i
 
 ### Start up the server
 When you run this command, changes in serverside JS files will be watched and the server will restart automatically, changes in clientside JS files will be watched and browserified and the server will be restarted.
-    
+
     npm start
 
 ### Additional commands
@@ -36,6 +36,9 @@ Watchify clientside JS
 Clean clientside build.js file
 
     npm run clean
+
+## Wishlist
+* Implement dashboard for queue system.
 
 
 ## License
