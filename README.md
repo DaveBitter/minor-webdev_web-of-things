@@ -1,5 +1,5 @@
 # Minor WebDev | Web Of Things
-Dave Bitter | 500710907
+Dave Bitter | Camille Niessen | Zishan K. Pasha | Tristan Jacobs | Ioannis Kapritsias
 
     V 1.0.0
 
@@ -9,8 +9,7 @@ This repository holds the seperate exercises for the course 'Web Of Things', par
 All exercise folders are standalone projects and work as such. You can navigate through the folder structure or through the navigation below.
 
 ## Issues
-I highly encourage adding issues to this repo in the case of finding one. I'm always up for improving my code.
+We highly encourage adding issues to this repo in the case of finding one. We are always up for improving our code.
 
 ## License
-[MIT](LICENSE.md) © [Dave Bitter](https://github.com/DaveBitter/)
-
+[MIT](LICENSE.md)
