@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/DaveBitter/minor-webdev_web-of-things#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "browserify": "^14.1.0",
