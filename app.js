@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 const app = express()
 
-const port = 1337
+const port = process.env.PORT || 8080;
 
 const indexRouter = require('./routes/index.js')
 
