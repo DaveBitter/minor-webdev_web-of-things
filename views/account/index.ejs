@@ -2,6 +2,20 @@
 
 <%= data.username %>
 
+<form method="post" action="/account/update">
+  <label>
+  	BoxID
+	  <input type="text" name="boxId" required />
+  </label>
+  <label>
+  	Color
+	  <input type="color" name="color" required />
+  </label>
+
+  <input type="submit" value="Sla op" />
+</form>
+
+
 <a href="/account/logout">Uitloggen</a>
 
 <%- include('../partials/head.ejs') %>

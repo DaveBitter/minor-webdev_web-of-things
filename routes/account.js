@@ -5,6 +5,7 @@ const passwordHash = require('password-hash')
 router.get('/', function(req, res) {
   if (req.session.login) {
     res.locals.data = req.session.data;
+    console.log(res.locals.data)
     res.render('account/index')
   } else {
     res.redirect('/account/login')
@@ -47,7 +48,9 @@ router.post('/register', function(req, res) {
     username: registerName,
     password: registerPassword
   }
-  userCollection.findOne({username: registerName}, function(err, user) {
+  userCollection.findOne({
+    username: registerName
+  }, function(err, user) {
     if (user) {
       console.log('Username bestaat al')
       res.locals.message = "De gekozen gebruikersnaam bestaat al"
@@ -58,6 +61,24 @@ router.post('/register', function(req, res) {
         res.redirect('/account/login')
       })
     }
+  })
+})
+
+router.post('/update', function(req, res) {
+  const userCollection = db.collection('users')
+  const boxId = req.body.boxId
+  const color = req.body.color
+  const updateData = {
+    boxId: boxId,
+    color: color
+  }
+  userCollection.findOne({
+    username: req.session.data.username
+  }, function(err, user) {
+    userCollection.updateOne(user, {$set: updateData}, (error, result) => {
+      if (err) return console.log(err)
+      res.redirect('/account')
+    })
   })
 })
 
