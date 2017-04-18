@@ -37,6 +37,9 @@ Clean clientside build.js file
 
     npm run clean
 
+## To Do
+You can view the To Do's in [todo.md](todo.md).
+
 ## Wishlist
 * Implement dashboard for queue system.
 
