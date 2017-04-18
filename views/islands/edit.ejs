@@ -18,12 +18,13 @@
 				<input type="radio" name="senior" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
 			</label>
 	<% }} %>
-	<% for(i=0; i<island.users.length; i++) { %>
+	<% for(i=0; i<island.users.length; i++) {
+		if(island.users[i].type == "junior") {%>
 		<label>
 			<%= island.users[i].username %>
 			<input type="checkbox" name="juniors" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
 		</label>
-	<% } %>
+	<% }} %>
 	<input type="submit" value="Update" />
 	</form>
 </div>
