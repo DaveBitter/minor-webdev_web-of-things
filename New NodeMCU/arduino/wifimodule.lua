@@ -4,7 +4,7 @@ local wifiModule = {}
 wifiModule.makeConnection = function()
 
   wifi.setmode(wifi.STATION)
-  wifi.sta.config('INTERNET', '***!')
+  wifi.sta.config('INTERNET', '***')
   wifi.sta.eventMonReg(wifi.STA_CONNECTING, function() print('Connecting to WiFi') end)
   wifi.sta.eventMonReg(wifi.STA_WRONGPWD, function() print('The WiFi password is wrong') end)
   wifi.sta.eventMonReg(wifi.STA_FAIL, function() print('Error while connecting to WiFi') end)
