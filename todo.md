@@ -2,7 +2,7 @@
 ## Core functionality
 - [x] Logins
 - [x] User profiles/settings
-- [ ] Senior of Junior detection
+- [ ] Senior or Junior detection
 - [ ] Send light from Junior to Senior
 - [ ] Send confirmation/deny from Senior to Junior
 
