@@ -65,9 +65,17 @@ router.post('/register', function(req, res) {
 
 router.post('/update', function(req, res) {
   const userCollection = db.collection('users')
+  const type = req.body.type
   const boxId = req.body.boxId
   const color = req.body.color
+
+  // otherwise the values are only updated when a user logs in again
+  req.session.data.type = type
+  req.session.data.boxId = boxId
+  req.session.data.color = color
+
   const updateData = {
+    type: type,
     boxId: boxId,
     color: color
   }

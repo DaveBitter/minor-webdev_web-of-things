@@ -3,6 +3,14 @@
 <div class="form-block">
 	<h2><%= data.username %></h2>
 	<form method="post" action="/account/update">
+	 <label>
+		  <input type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
+	  	Junior
+	  </label>
+	  <label>
+		  <input type="radio" name="type" value="senior" <% if(data.type == "senior") { %> checked="true" <% } %> required />
+	  	Senior
+	  </label>
 	  <label>
 	  	BoxID
 		  <input type="text" name="boxId" value="<%= data.boxId %>" required />
