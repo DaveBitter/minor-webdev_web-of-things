@@ -1,0 +1,23 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="form-block">
+	<h2>Create an Island</h2>
+	<form class="form" method="post" action="/islands/create">
+	<label>
+		Name
+		<input type="text" name="name" required />
+	</label>
+	<label>
+		Description
+		<textarea type="text" name="decription" required></textarea>
+	</label>
+	<% for(i=0; i<users.length; i++) { %>
+		<label>
+			<%= users[i].username %>
+			<input type="checkbox" name="<%= users[i].username %>">
+		</label>
+	<% } %>
+	</form>
+</div>
+
+<%- include('../partials/head.ejs') %>
