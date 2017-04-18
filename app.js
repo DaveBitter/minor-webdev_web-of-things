@@ -37,12 +37,14 @@ app.use(bodyParser.urlencoded({extended: true}));
 ----------------------------------------- */
 const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
+const islandsRouter = require('./routes/islands.js')
 
 app
 	.set('view engine', 'ejs')
 	.use(express.static('public'))
 	.use('/', indexRouter)
 	.use('/account', accountRouter)
+	.use('/islands', islandsRouter)
 	.listen(port, () => {
 		console.log('Started server on http://localhost:' + port)
 	})

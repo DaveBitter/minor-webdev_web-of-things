@@ -1,0 +1,14 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="form-block">
+	<h2>islands</h2>
+	<a href="/islands/create">Create</a>
+
+	<ul>
+		<% for(i=0; i<islands.length; i++) { %>
+			<li><a href="/islands/edit/<%= islands[i].name %>"><%= islands[i].name %></a></li>
+		<% } %>
+	</ul>
+</div>
+
+<%- include('../partials/head.ejs') %>

@@ -1,0 +1,24 @@
+<%- include('../partials/head.ejs') %>
+
+<div class="form-block">
+	<h2>Edit <%= island.name %></h2>
+	<form class="form" method="post" action="/islands/edit/<%= island.name %>">
+	<label>
+		Name
+		<input type="text" name="name" value=<%= island.description %> required readonly />
+	</label>
+	<label>
+		Description
+		<textarea type="text" name="description" required><%= island.description %></textarea>
+	</label>
+	<% for(i=0; i<island.users.length; i++) { %>
+		<label>
+			<%= island.users[i] %>
+			<input type="checkbox" name="users" checked value="<%= island.users[i] %>">
+		</label>
+	<% } %>
+	<input type="submit" value="Update" />
+	</form>
+</div>
+
+<%- include('../partials/head.ejs') %>
