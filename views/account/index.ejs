@@ -5,11 +5,11 @@
 <form method="post" action="/account/update">
   <label>
   	BoxID
-	  <input type="text" name="boxId" required />
+	  <input type="text" name="boxId" value="<%= data.boxId %>" required />
   </label>
   <label>
   	Color
-	  <input type="color" name="color" required />
+	  <input type="color" name="color" value="<%= data.color %>" required />
   </label>
 
   <input type="submit" value="Sla op" />

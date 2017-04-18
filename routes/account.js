@@ -5,7 +5,6 @@ const passwordHash = require('password-hash')
 router.get('/', function(req, res) {
   if (req.session.login) {
     res.locals.data = req.session.data;
-    console.log(res.locals.data)
     res.render('account/index')
   } else {
     res.redirect('/account/login')
