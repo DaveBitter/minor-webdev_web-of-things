@@ -40,7 +40,4 @@ jspm_packages
 
 /public/js/build
 
-/MCUreset/esptool
-/MCUreset/lua
-
 .env
