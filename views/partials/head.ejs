@@ -9,7 +9,7 @@
 <body>
 
 	<script>
-  var ws = new WebSocket('ws://localhost:3000');
+  var ws = new WebSocket('ws://web-of-things.herokuapp.com:3000');
 	ws.addEventListener('open', function(event) {
     console.log('Socket connected');
     ws.send(JSON.stringify({device: 'scoreboard', msg: 'test'}));
