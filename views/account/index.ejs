@@ -2,7 +2,7 @@
 
 <div class="form-block">
 	<h2><%= data.username %></h2>
-	<form method="post" action="/account/update">
+	<form class="form" method="post" action="/account/update">
 		<label>
 			<input type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
 			Junior
