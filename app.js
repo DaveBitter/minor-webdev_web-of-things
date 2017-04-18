@@ -6,6 +6,13 @@ const path = require('path')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const app = express()
+const WebSocket = require('ws')
+const http = require('http')
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({server})
+
+console.log(wss);
 
 const port = process.env.PORT || 3000;
 
@@ -19,6 +26,12 @@ MongoClient.connect(dbConfig, (err, database) => {
   if (err) return console.log(err)
   db = database
 });
+
+wss.on('connection', test);
+
+function test() {
+  console.log('test')
+}
 
 /* SESSIONS CONFIGURATION
 ----------------------------------------- */
@@ -38,11 +51,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
 
-app
-	.set('view engine', 'ejs')
-	.use(express.static('public'))
-	.use('/', indexRouter)
-	.use('/account', accountRouter)
-	.listen(port, () => {
-		console.log('Started server on http://localhost:' + port)
-	})
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use('/', indexRouter)
+app.use('/account', accountRouter)
+
+server.listen(port, function() {
+    console.log(`Server started`);
+});
