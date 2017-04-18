@@ -1,21 +1,21 @@
 <%- include('../partials/head.ejs') %>
 
-<%= data.username %>
+<div class="form-block">
+	<h2><%= data.username %></h2>
+	<form method="post" action="/account/update">
+	  <label>
+	  	BoxID
+		  <input type="text" name="boxId" value="<%= data.boxId %>" required />
+	  </label>
+	  <label>
+	  	Color
+		  <input type="color" name="color" value="<%= data.color %>" required />
+	  </label>
 
-<form method="post" action="/account/update">
-  <label>
-  	BoxID
-	  <input type="text" name="boxId" value="<%= data.boxId %>" required />
-  </label>
-  <label>
-  	Color
-	  <input type="color" name="color" value="<%= data.color %>" required />
-  </label>
+	  <input type="submit" value="Sla op" />
+	</form>
 
-  <input type="submit" value="Sla op" />
-</form>
-
-
-<a href="/account/logout">Uitloggen</a>
+	<a href="/account/logout">Uitloggen</a>
+</div>
 
 <%- include('../partials/head.ejs') %>
