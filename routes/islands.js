@@ -33,12 +33,14 @@ router.post('/create', function(req, res) {
 	const islandCollection = db.collection('islands')
 	const name = req.body.name
 	const description = req.body.description
-	const users = req.body.users
+	const senior = req.body.senior
+	const juniors = req.body.juniors
 
 	const islandData = {
 		name: name,
 		description: description,
-		users: users
+		senior: senior,
+		juniors: juniors
 	}
 	islandCollection.save(islandData, (err, result) => {
 		if (err) return console.log(err)
@@ -64,15 +66,15 @@ router.post('/edit/:id', function(req, res) {
 	const islandCollection = db.collection('islands')
 	const name = req.body.name
 	const description = req.body.description
-	const users = req.body.users
+	const senior = req.body.senior
+	const juniors = req.body.juniors
 
 	const updateData = {
 		name: name,
 		description: description,
-		users: users
+		senior: senior,
+		juniors: juniors
 	}
-
-	console.log(updateData)
 
 	islandCollection.findOne({
     name: islandName
