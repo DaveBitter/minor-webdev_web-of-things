@@ -1,29 +1,30 @@
 <%- include('../partials/head.ejs') %>
 
-<div class="form-block">
-	<h2><%= data.username %></h2>
-	<form class="form" method="post" action="/account/update">
-		<label>
+	<div class="form-block">
+		<img class="logo-small" src="/img/island.png">
+		<h2><%= data.username %></h2>
+		<form class="form" method="post" action="/account/update">
+			<label>
 			<input type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
 			Junior
 		</label>
-		<label>
+			<label>
 			<input type="radio" name="type" value="senior" <% if(data.type == "senior") { %> checked="true" <% } %> required />
 			Senior
 		</label>
-		<label>
+			<label>
 			BoxID
 			<input type="text" name="boxId" value="<%= data.boxId %>" required />
 		</label>
-		<label>
+			<label>
 			Color
 			<input type="color" name="color" value="<%= data.color %>" required />
 		</label>
 
-		<input type="submit" value="Sla op" />
-	</form>
+			<input type="submit" value="Sla op" />
+		</form>
 
-	<a href="/account/logout">Uitloggen</a>
-</div>
+		<a href="/account/logout">Uitloggen</a>
+	</div>
 
-<%- include('../partials/head.ejs') %>
+	<%- include('../partials/head.ejs') %>
