@@ -12,9 +12,9 @@ const http = require('http')
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server})
 
-console.log(wss);
-
 const port = process.env.PORT || 3000;
+
+console.log(port);
 
 /* MONGODB CONFIGURATION
 ----------------------------------------- */
