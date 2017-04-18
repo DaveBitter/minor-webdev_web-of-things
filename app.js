@@ -14,7 +14,7 @@ const wss = new WebSocket.Server({server})
 
 const port = process.env.PORT || 3000;
 
-console.log('port': port);
+console.log('port ' + port);
 
 /* MONGODB CONFIGURATION
 ----------------------------------------- */
