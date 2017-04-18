@@ -11,10 +11,17 @@
 		Description
 		<textarea type="text" name="description" required><%= island.description %></textarea>
 	</label>
+	<% for(i=0; i<island.users.length; i++) {
+		if(island.users[i].type == "senior") { %>
+			<label>
+				<%= island.users[i].username + " (" + island.users[i].type + ")" %>
+				<input type="radio" name="senior" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
+			</label>
+	<% }} %>
 	<% for(i=0; i<island.users.length; i++) { %>
 		<label>
-			<%= island.users[i] %>
-			<input type="checkbox" name="users" checked value="<%= island.users[i] %>">
+			<%= island.users[i].username %>
+			<input type="checkbox" name="juniors" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
 		</label>
 	<% } %>
 	<input type="submit" value="Update" />
