@@ -3,16 +3,41 @@ const router = express.Router()
 const passwordHash = require('password-hash')
 
 router.get('/', function(req, res) {
-  res.render('account/index')
-});
+  if (req.session.login) {
+    res.locals.data = req.session.data;
+    res.render('account/index')
+  } else {
+    res.redirect('/account/login')
+  }
+})
 
 router.get('/login', function(req, res) {
   res.render('account/login')
-});
+})
+
+router.post('/login', function(req, res) {
+  const userCollection = db.collection('users')
+  const loginName = req.body.username
+  const loginPassword = req.body.password
+  userCollection.findOne({
+    username: loginName
+  }, function(err, user) {
+    if (user) {
+      const passwordCheck = passwordHash.verify(loginPassword, user['password']);
+      if (passwordCheck === true) {
+        req.session.login = true;
+        req.session.data = user;
+        res.redirect('/account/');
+      }
+    } else {
+      res.render('account/login')
+    }
+  });
+})
 
 router.get('/register', function(req, res) {
   res.render('account/register')
-});
+})
 
 router.post('/register', function(req, res) {
   const userCollection = db.collection('users')
@@ -25,7 +50,7 @@ router.post('/register', function(req, res) {
   userCollection.findOne({username: registerName}, function(err, user) {
     if (user) {
       console.log('Username bestaat al')
-      res.locals.message = "De gekozen gebruikersnaam bestaat al";
+      res.locals.message = "De gekozen gebruikersnaam bestaat al"
       res.render('account/register')
     } else {
       userCollection.save(registerData, (error, result) => {
@@ -34,6 +59,12 @@ router.post('/register', function(req, res) {
       })
     }
   })
+})
+
+router.get('/logout', function(req, res) {
+  req.session.data = '';
+  req.session.login = false;
+  res.redirect('/');
 })
 
 module.exports = router
