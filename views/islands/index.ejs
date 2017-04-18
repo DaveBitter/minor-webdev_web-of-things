@@ -9,14 +9,15 @@
 	</label>
 	<label>
 		Description
-		<textarea type="text" name="decription" required></textarea>
+		<textarea type="text" name="description" required></textarea>
 	</label>
 	<% for(i=0; i<users.length; i++) { %>
 		<label>
 			<%= users[i].username %>
-			<input type="checkbox" name="<%= users[i].username %>">
+			<input type="checkbox" name="users" value="<%= users[i].username %>">
 		</label>
 	<% } %>
+	<input type="submit" value="Save" />
 	</form>
 </div>
 
