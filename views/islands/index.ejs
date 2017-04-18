@@ -1,24 +1,14 @@
 <%- include('../partials/head.ejs') %>
 
 <div class="form-block">
-	<h2>Create an Island</h2>
-	<form class="form" method="post" action="/islands/create">
-	<label>
-		Name
-		<input type="text" name="name" required />
-	</label>
-	<label>
-		Description
-		<textarea type="text" name="description" required></textarea>
-	</label>
-	<% for(i=0; i<users.length; i++) { %>
-		<label>
-			<%= users[i].username %>
-			<input type="checkbox" name="users" value="<%= users[i].username %>">
-		</label>
-	<% } %>
-	<input type="submit" value="Save" />
-	</form>
+	<h2>islands</h2>
+	<a href="/islands/create">Create</a>
+
+	<ul>
+		<% for(i=0; i<islands.length; i++) { %>
+			<li><a href="/islands/edit/<%= islands[i].name %>"><%= islands[i].name %></a></li>
+		<% } %>
+	</ul>
 </div>
 
 <%- include('../partials/head.ejs') %>
