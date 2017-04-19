@@ -33,12 +33,14 @@ router.post('/create', function(req, res) {
 	const islandCollection = db.collection('islands')
 	const name = req.body.name
 	const description = req.body.description
-	const users = req.body.users
+	const senior = req.body.senior
+	const juniors = req.body.juniors
 
 	const islandData = {
 		name: name,
 		description: description,
-		users: users
+		senior: senior,
+		juniors: juniors
 	}
 	islandCollection.save(islandData, (err, result) => {
 		if (err) return console.log(err)
@@ -49,13 +51,35 @@ router.post('/create', function(req, res) {
 router.get('/edit/:id', function(req, res) {
 	const islandName = req.params.id
 	const islandCollection = db.collection('islands')
+	const userCollection = db.collection('users')
 
 	islandCollection.findOne({
 		name: islandName
 	}, function(err, island) {
 		if (err) return console.log(err)
-		res.locals.island = island
-		res.render('islands/edit')
+
+		userCollection.find({}, {}).toArray(function(err, users) {
+			// add property of selected to array of users
+			island.juniors.forEach(function(junior) {
+				users.map(function(user) {
+					if (user.username == junior && user.type !== "senior") {
+						user.selected = true
+					} else if (user.selected !== true) {
+						user.selected = false
+					}
+				})
+			})
+
+			// add property of selected to senior that is selected
+			users.map(function(user) {
+				if (user.username === island.senior) {
+					user.selected = true
+				}
+			})
+			island.users = users
+			res.locals.island = island
+			res.render('islands/edit')
+		});
 	})
 })
 
@@ -64,24 +88,26 @@ router.post('/edit/:id', function(req, res) {
 	const islandCollection = db.collection('islands')
 	const name = req.body.name
 	const description = req.body.description
-	const users = req.body.users
+	const senior = req.body.senior
+	const juniors = req.body.juniors
 
 	const updateData = {
 		name: name,
 		description: description,
-		users: users
+		senior: senior,
+		juniors: juniors
 	}
 
-	console.log(updateData)
-
 	islandCollection.findOne({
-    name: islandName
-  }, function(err, island) {
-    islandCollection.updateOne(island, {$set: updateData}, (error, result) => {
-      if (err) return console.log(err)
-      res.redirect('/islands')
-    })
-  })
+		name: islandName
+	}, function(err, island) {
+		islandCollection.updateOne(island, {
+			$set: updateData
+		}, (error, result) => {
+			if (err) return console.log(err)
+			res.redirect('/islands')
+		})
+	})
 })
 
 module.exports = router

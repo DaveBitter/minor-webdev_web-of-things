@@ -1,23 +1,24 @@
 <%- include('../partials/head.ejs') %>
 
 <div class="form-block">
-	<h2><%= data.username %></h2>
+	<h1><%= data.username %></h1>
 	<form class="form" method="post" action="/account/update">
-		<label>
-			<input type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
+		<input class="choice-input" id="junior" type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
+		<label for="junior" class="choice-label">
+
 			Junior
 		</label>
-		<label>
-			<input type="radio" name="type" value="senior" <% if(data.type == "senior") { %> checked="true" <% } %> required />
+		<input class="choice-input" id="senior" type="radio" name="type" value="senior" <% if(data.type == "senior") { %> checked="true" <% } %> required />
+		<label for="senior" class="choice-label">
 			Senior
 		</label>
-		<label>
+		<label class="id-input">
 			BoxID
-			<input type="text" name="boxId" value="<%= data.boxId %>" required />
+			<input class="account-input" type="text" name="boxId" value="<%= data.boxId %>" required />
 		</label>
 		<label>
 			Color
-			<input type="color" name="color" value="<%= data.color %>" required />
+			<input class="account-input" type="color" name="color" value="<%= data.color %>" required />
 		</label>
 
 		<input type="submit" value="Sla op" />

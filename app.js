@@ -50,7 +50,6 @@ const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
 
-
 app
 	.set('view engine', 'ejs')
 	.use(express.static('public'))
