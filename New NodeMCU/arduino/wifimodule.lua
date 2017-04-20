@@ -21,7 +21,6 @@ function wifimodule.connect(network, callback)
     -- Auto-accept HvA open wifi thingy
     conn:on('receive', function(sck, c)
       print('[Wi-Fi] Connected to ' .. network.ssid .. '!')
-      callback()
     end)
 
     if network.ssid == 'HvA Open Wi-Fi' then
@@ -30,6 +29,8 @@ function wifimodule.connect(network, callback)
       end)
     end
 
+    callback()
+    
     conn:connect(8002, gateway)
   end)
   wifi.sta.eventMonStart()
