@@ -1,8 +1,16 @@
-local wifiModule = require 'wifimodule'
-local webSocketModule = require 'websocket'
+local socketmodule = require 'socketmodule'
+local wifimodule = require 'wifimodule'
+local config = require 'config'
 
--- Application here
+function init()
 
--- local ws = webSocketModule.init()
-wifiModule.makeConnection()
-print('init')
+  print('init')
+  print(wifi.sta.getip())
+
+  local ws = socketmodule.start()
+  --
+  print(ws)
+
+end
+
+wifimodule.makeConnection(config, init)

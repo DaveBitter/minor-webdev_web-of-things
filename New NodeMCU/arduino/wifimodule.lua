@@ -1,20 +1,35 @@
 -- Wifi Module for connecting to the internet
-local wifiModule = {}
+local wifimodule = {}
 
-wifiModule.makeConnection = function()
+function wifimodule.makeConnection(config, callback)
 
+  print('test')
+ 
   wifi.setmode(wifi.STATION)
-  wifi.sta.config('INTERNET', '***')
+  wifi.sta.config(config.ssid, config.password)
+  wifi.sta.eventMonReg(wifi.STA_IDLE, function() print('No usable WiFi connection') end)
   wifi.sta.eventMonReg(wifi.STA_CONNECTING, function() print('Connecting to WiFi') end)
   wifi.sta.eventMonReg(wifi.STA_WRONGPWD, function() print('The WiFi password is wrong') end)
+  wifi.sta.eventMonReg(wifi.STA_APNOTFOUND, function() print('No WiFi access point found') end)
   wifi.sta.eventMonReg(wifi.STA_FAIL, function() print('Error while connecting to WiFi') end)
-  wifi.sta.eventMonReg(wifi.STA_GOTIP, function() print('Connected') end)
+  wifi.sta.eventMonReg(wifi.STA_GOTIP, function()
+      print('connection made!')
+      print('ip: ' .. wifi.sta.getip())
+
+      local connection = net.createConnection(net.TCP, false)
+      ip, nm, gateway = wifi.sta.getip()
+      local redirHost = gateway .. ':8002'
+      print(redirHost)
+
+      connection:connect(8002, gateway)
+
+      callback()
+      
+  end)
 
   wifi.sta.eventMonStart()
   wifi.sta.connect()
 
 end
 
-wifiModule.makeConnection()
-
-return wifiModule
+return wifimodule
