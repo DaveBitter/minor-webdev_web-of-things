@@ -48,10 +48,7 @@ app
 	.use(express.static('public'))
 	.use('/', indexRouter)
 	.use('/account', accountRouter)
-	.use('/islands', islandsRouter)
-	.listen(port, () => {
-		console.log('Started server on http://localhost:' + port)
-	})
+	.use('/islands', islandsRouter);
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -62,6 +59,10 @@ app.use('/account', accountRouter)
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server})
 wss.on('connection', test);
+
+server.listen(port, () => {
+  console.log('Started server on http://localhost:' + port)
+})
 
 function test() {
   console.log('test')
