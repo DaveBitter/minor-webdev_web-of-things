@@ -16,7 +16,7 @@
 		console.log('Connected!');
 	})
 
-	ws.addEventListener('message', () => {
-		console.log('test');
+	ws.addEventListener('message', (message) => {
+		console.log(message);
 	})
 </script>
