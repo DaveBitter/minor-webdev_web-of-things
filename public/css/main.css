@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700');
-
 * {
 	font-family: 'Raleway', sans-serif;
 }
 
 body {
-	background: #56ccf2; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #56ccf2, #2f80ed); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #56ccf2, #2f80ed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #56ccf2;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #56ccf2, #2f80ed);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #56ccf2, #2f80ed);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -17,8 +19,8 @@ body {
 a {
 	color: deepskyblue;
 }
-a:focus,
-a:hover {
+
+a:focus, a:hover {
 	color: skyblue;
 }
 
@@ -45,12 +47,13 @@ a:hover {
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.login-btn:focus,
-.login-btn:hover {
+
+.login-btn:focus, .login-btn:hover {
 	color: white;
 	background-color: crimson;
 	transition: 0.3s;
 }
+
 
 /* Login form */
 
@@ -59,17 +62,16 @@ a:hover {
 	min-width: 17em;
 	background-color: #fff;
 	padding: 2em;
-	-webkit-box-shadow: 0px 10px 37px -16px rgba(0,0,0,0.50);
-	-moz-box-shadow: 0px 10px 37px -16px rgba(0,0,0,0.50);
-	box-shadow: 0px 10px 37px -16px rgba(0,0,0,0.50);
+	-webkit-box-shadow: 0px 10px 37px -16px rgba(0, 0, 0, 0.50);
+	-moz-box-shadow: 0px 10px 37px -16px rgba(0, 0, 0, 0.50);
+	box-shadow: 0px 10px 37px -16px rgba(0, 0, 0, 0.50);
 }
 
 .large {
 	width: 30em;
 }
 
-.form-block h1,
-.form-block h2 {
+.form-block h1, .form-block h2 {
 	text-align: center;
 	color: #3C9BD4;
 }
@@ -87,8 +89,7 @@ a:hover {
 	flex-direction: column;
 }
 
-.form label,
-.form input {
+.form label, .form input {
 	margin-bottom: 0.5em;
 }
 
@@ -99,7 +100,7 @@ a:hover {
 }
 
 .form label.choice-label {
-	border:0.1em #57C0C9 solid;
+	border: 0.1em #57C0C9 solid;
 	padding: 1em;
 	display: block;
 	text-align: center;
@@ -107,10 +108,9 @@ a:hover {
 	cursor: pointer;
 }
 
-.form label.choice-label:hover,
-.form label.choice-label:focus {
+.form label.choice-label:hover, .form label.choice-label:focus {
 	background-color: #57C0C9;
-	color:#ffffff;
+	color: #ffffff;
 }
 
 .form input[type="radio"].choice-input {
@@ -119,9 +119,9 @@ a:hover {
 	opacity: 0;
 }
 
-.form input[type="radio"]:checked + label.choice-label {
+.form input[type="radio"]:checked+label.choice-label {
 	background-color: #57C0C9;
-	color:#ffffff;
+	color: #ffffff;
 }
 
 .form label.id-input {
@@ -139,8 +139,7 @@ a:hover {
 	border: 1px solid lightgrey;
 }
 
-.form input[type="submit"],
-.create-island-btn {
+.form input[type="submit"], .create-island-btn {
 	text-transform: uppercase;
 	padding: 1em 0;
 	margin: 1em 0;
@@ -150,39 +149,38 @@ a:hover {
 	transition: 0.3s;
 }
 
-.form input[type="submit"]:focus,
-.form input[type="submit"]:hover,
-.create-island-btn:focus,
-.create-island-btn:hover {
+.form input[type="submit"]:focus, .form input[type="submit"]:hover, .create-island-btn:focus, .create-island-btn:hover {
 	cursor: pointer;
 	background-color: #3AAAB3;
 	transition: 0.3s;
 }
 
-.form-block a{
+.form-block a {
 	display: block;
 	text-align: center;
 	font-size: 70%;
 }
+
 
 /* Island Pages */
 
 .island-list {
 	-webkit-padding-start: 0;
 }
+
 .island-list li {
 	font-size: larger;
 	padding: 0.5em 0 0.5em;
-  list-style-type: none;
-  background-image: url(../img/palm.png);
-  background-position: 0 0;
-  background-size: 1.6em 1.6em;
-  background-repeat: no-repeat;
+	list-style-type: none;
+	background-image: url(../img/palm.png);
+	background-position: 0 0;
+	background-size: 1.6em 1.6em;
+	background-repeat: no-repeat;
 }
 
 #create-island-form label {
 	display: flex;
-  flex-direction: column;
+	flex-direction: column;
 	margin-bottom: 0.5em;
 }
 
@@ -195,18 +193,32 @@ a:hover {
 	padding: 0.8em;
 }
 
-#create-island-form input[type="radio"],
-#create-island-form input[type="checkbox"] {
+#create-island-form input[type="radio"], #create-island-form input[type="checkbox"] {
 	margin-right: 1em;
 }
 
-label.radio-list,
-label.checkbox-list {
+label.radio-list, label.checkbox-list {
 	display: flex;
 	flex-direction: row!important;
 }
 
-label.radio-list:hover,
-label.checkbox-list:hover {
+label.radio-list:hover, label.checkbox-list:hover {
 	cursor: pointer;
+}
+
+.fadeIn {
+	animation-duration: .3s;
+	animation-fill-mode: both;
+	animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
 }
