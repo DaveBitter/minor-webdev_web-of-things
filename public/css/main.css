@@ -74,6 +74,12 @@ a:hover {
 	color: #3C9BD4;
 }
 
+.form-block h3 {
+	margin-top: -1em;
+	text-align: center;
+	color: #3083ED;
+}
+
 .form-block h4 {
 	color: #3C9BD4;
 }

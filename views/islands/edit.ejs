@@ -1,9 +1,12 @@
 <%- include('../partials/head.ejs') %>
 
-<div class="form-block">
+<div class="form-block large">
 	<img class="logo-small" src="/img/island.png">
-	<h2>Edit <%= island.name %></h2>
-	<form class="form" method="post" action="/islands/edit/<%= island.name %>">
+	<h2>Edit Island:</h2>
+	<h3><%= island.name %></h3>
+
+	<form id="create-island-form" class="form" method="post" action="/islands/edit/<%= island.name %>">
+	<h4>Basic Information</h4>
 	<label>
 		Name
 		<input type="text" name="name" value=<%= island.description %> required readonly />
@@ -12,18 +15,21 @@
 		Description
 		<textarea type="text" name="description" required><%= island.description %></textarea>
 	</label>
+	<h4>Assigned Seniors</h4>
 	<% for(i=0; i<island.users.length; i++) {
 		if(island.users[i].type == "senior") { %>
-			<label>
-				<%= island.users[i].username + " (" + island.users[i].type + ")" %>
+			<label class="radio-list">
 				<input type="radio" name="senior" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
+				<%= island.users[i].username + " (" + island.users[i].type + ")" %>
+
 			</label>
 	<% }} %>
+	<h4>Assigned Juniors</h4>
 	<% for(i=0; i<island.users.length; i++) {
 		if(island.users[i].type == "junior") {%>
-		<label>
-			<%= island.users[i].username %>
+		<label class="checkbox-list">
 			<input type="checkbox" name="juniors" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
+			<%= island.users[i].username %>
 		</label>
 	<% }} %>
 	<input type="submit" value="Update" />
