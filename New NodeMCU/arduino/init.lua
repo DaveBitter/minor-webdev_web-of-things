@@ -8,7 +8,6 @@ function init()
   print(wifi.sta.getip())
 
   local ws = socketmodule.start()
-  --
   print(ws)
 
 end

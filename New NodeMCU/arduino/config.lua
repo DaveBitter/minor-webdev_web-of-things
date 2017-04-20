@@ -2,7 +2,7 @@ local config = {}
 
 config.ssid = 'HvA Open Wi-Fi'
 config.password = ''
-config.server = 'e17d6e22.ngrok.io'
-config.port = '3000'
+config.server = '107.170.14.163'
+config.port = '80'
 
 return config

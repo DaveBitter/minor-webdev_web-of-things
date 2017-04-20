@@ -9,9 +9,6 @@ const app = express()
 const WebSocket = require('ws')
 const http = require('http')
 
-const server = http.createServer(app);
-const wss = new WebSocket.Server({server})
-
 const port = process.env.PORT || 3000;
 
 /* MONGODB CONFIGURATION
@@ -25,11 +22,7 @@ MongoClient.connect(dbConfig, (err, database) => {
   db = database
 });
 
-wss.on('connection', test);
 
-function test() {
-  console.log('test')
-}
 
 /* SESSIONS CONFIGURATION
 ----------------------------------------- */
@@ -64,3 +57,12 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use('/', indexRouter)
 app.use('/account', accountRouter)
+
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({server})
+wss.on('connection', test);
+
+function test() {
+  console.log('test')
+}

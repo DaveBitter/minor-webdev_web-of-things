@@ -4,7 +4,7 @@ local wifimodule = {}
 function wifimodule.makeConnection(config, callback)
 
   print('test')
- 
+
   wifi.setmode(wifi.STATION)
   wifi.sta.config(config.ssid, config.password)
   wifi.sta.eventMonReg(wifi.STA_IDLE, function() print('No usable WiFi connection') end)
@@ -16,7 +16,7 @@ function wifimodule.makeConnection(config, callback)
       print('connection made!')
       print('ip: ' .. wifi.sta.getip())
 
-      local connection = net.createConnection(net.TCP, false)
+      local connection = net.createConnection(net.TCP, 1)
       ip, nm, gateway = wifi.sta.getip()
       local redirHost = gateway .. ':8002'
       print(redirHost)
@@ -24,7 +24,7 @@ function wifimodule.makeConnection(config, callback)
       connection:connect(8002, gateway)
 
       callback()
-      
+
   end)
 
   wifi.sta.eventMonStart()

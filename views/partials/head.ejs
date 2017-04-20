@@ -10,5 +10,9 @@
 <body>
 
 <script defer>
-  var ws = new WebSocket('ws://web-of-things.herokuapp.com:80');
+  var ws = new WebSocket('ws://107.170.14.163:80');
+
+	ws.addEventListener('connect', () => {
+		console.log('connected');
+	})
 </script>
