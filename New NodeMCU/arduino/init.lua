@@ -19,6 +19,7 @@ function init()
   end)
 
   function onChange() 
+    print('change')
     ws:send('change')
   end
 
