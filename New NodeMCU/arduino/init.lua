@@ -19,11 +19,9 @@ function init()
   end)
 
   function onChange() 
-    print('change')
-    ws:send('change')
+    ws:send('Box ID: ' .. node.chipid())
   end
 
-  print('Box ID: ' .. node.chipid())
   print(gpio)
   print(gpio.read(1))
 
