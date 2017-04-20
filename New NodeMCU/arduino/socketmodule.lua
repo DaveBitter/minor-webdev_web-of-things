@@ -19,7 +19,7 @@ function socketmodule.start()
   end)
 --
   print('[WebSocket] Connecting to ws at ws://' .. config.server .. ':' .. config.port .. '...')
-  ws:connect('ws://' .. config.server .. ':80')
+  ws:connect('ws://' .. config.server .. ':8002')
   print(ws)
   return ws
 
