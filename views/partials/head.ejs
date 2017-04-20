@@ -15,4 +15,8 @@
 	ws.addEventListener('open', () => {
 		console.log('connected');
 	})
+
+	ws.addEventListener('message', () => {
+		console.log('message');
+	})
 </script>
