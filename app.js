@@ -67,6 +67,6 @@ server.listen(port, () => {
 function socketConnectionMade(socket) {
   socket.on('message', function(message) {
     console.log(message);
-    window.location.hash = "socket";
+    res.setHeader('Location', 'test');
   })
 }
