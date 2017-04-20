@@ -12,4 +12,4 @@ function init()
 
 end
 
-wifimodule.makeConnection(config, init)
+wifimodule.connect(config, init)
