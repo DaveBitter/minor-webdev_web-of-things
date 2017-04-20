@@ -64,8 +64,18 @@ a:hover {
 	box-shadow: 0px 10px 37px -16px rgba(0,0,0,0.50);
 }
 
-.form-block h1 {
+.large {
+	width: 30em;
+}
+
+.form-block h1,
+.form-block h2 {
 	text-align: center;
+	color: #3C9BD4;
+}
+
+.form-block h4 {
+	color: #3C9BD4;
 }
 
 .form-block a {
@@ -84,6 +94,8 @@ a:hover {
 
 .form label {
 	font-size: 70%;
+	display: flex;
+	flex-direction: row;
 }
 
 .form label.choice-label {
@@ -127,7 +139,8 @@ a:hover {
 	border: 1px solid lightgrey;
 }
 
-.form input[type="submit"] {
+.form input[type="submit"],
+.create-island-btn {
 	text-transform: uppercase;
 	padding: 1em 0;
 	margin: 1em 0;
@@ -138,7 +151,9 @@ a:hover {
 }
 
 .form input[type="submit"]:focus,
-.form input[type="submit"]:hover {
+.form input[type="submit"]:hover,
+.create-island-btn:focus,
+.create-island-btn:hover {
 	cursor: pointer;
 	background-color: #3AAAB3;
 	transition: 0.3s;
@@ -148,4 +163,50 @@ a:hover {
 	display: block;
 	text-align: center;
 	font-size: 70%;
+}
+
+/* Island Pages */
+
+.island-list {
+	-webkit-padding-start: 0;
+}
+.island-list li {
+	font-size: larger;
+	padding: 0.5em 0 0.5em;
+  list-style-type: none;
+  background-image: url(../img/palm.png);
+  background-position: 0 0;
+  background-size: 1.6em 1.6em;
+  background-repeat: no-repeat;
+}
+
+#create-island-form label {
+	display: flex;
+  flex-direction: column;
+	margin-bottom: 0.5em;
+}
+
+#create-island-form textarea {
+	outline: none;
+	border: 1px solid lightgrey;
+	resize: none;
+	box-sizing: border-box;
+	height: 5em;
+	padding: 0.8em;
+}
+
+#create-island-form input[type="radio"],
+#create-island-form input[type="checkbox"] {
+	margin-right: 1em;
+}
+
+label.radio-list,
+label.checkbox-list {
+	display: flex;
+	flex-direction: row!important;
+}
+
+label.radio-list:hover,
+label.checkbox-list:hover {
+	cursor: pointer;
 }

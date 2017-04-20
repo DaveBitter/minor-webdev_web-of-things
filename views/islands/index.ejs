@@ -1,14 +1,17 @@
 <%- include('../partials/head.ejs') %>
 
 <div class="form-block">
-	<h2>islands</h2>
-	<a href="/islands/create">Create</a>
+	<img class="logo-small" src="/img/island.png">
+	<h2>Islands</h2>
+	<hr>
 
-	<ul>
+	<ul class="island-list">
 		<% for(i=0; i<islands.length; i++) { %>
 			<li><a href="/islands/edit/<%= islands[i].name %>"><%= islands[i].name %></a></li>
 		<% } %>
 	</ul>
+
+	<a class="create-island-btn" href="/islands/create">New Island</a>
 </div>
 
 <%- include('../partials/head.ejs') %>
