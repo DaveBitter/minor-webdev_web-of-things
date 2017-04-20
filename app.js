@@ -58,9 +58,9 @@ app.use('/account', accountRouter)
 
 const server = http.createServer(app);
 const ws = new WebSocket.Server({server});
-ws.broadcast = broadcast;
 ws.on('connection', socketConnectionMade);
 
+ws.broadcast = broadcast;
 
 server.listen(port, () => {
   console.log('Started server on http://localhost:' + port)
