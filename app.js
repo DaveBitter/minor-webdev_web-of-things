@@ -51,6 +51,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const indexRouter = require('./routes/index.js');
 const accountRouter = require('./routes/account.js');
 const islandsRouter = require('./routes/islands.js');
+const dashboardRouter = require('./routes/dashboard.js');
 
 app
 	.set('view engine', 'ejs')
@@ -58,6 +59,7 @@ app
 	.use('/', indexRouter)
 	.use('/account', accountRouter)
 	.use('/islands', islandsRouter)
+    .use('/dashboard', dashboardRouter)
 	.listen(port, () => {
 		console.log('Started server on http://localhost:' + port);
 	});
