@@ -42,7 +42,7 @@ router.post('/create', function(req, res) {
 		name: name,
 		description: description,
 		senior: senior,
-		juniors: juniors
+		juniors: [juniors]
 	};
 	islandCollection.save(islandData, (err, result) => {
 		if (err) return console.log(err);
