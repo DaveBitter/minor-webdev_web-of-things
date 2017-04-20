@@ -60,15 +60,15 @@ const server = http.createServer(app);
 const ws = new WebSocket.Server({server});
 ws.on('connection', socketConnectionMade);
 
-ws.broadcast = broadcast;
-
 server.listen(port, () => {
   console.log('Started server on http://localhost:' + port)
 })
 
 function socketConnectionMade(socket) {
   socket.on('message', function(message) {
-    ws.broadcast(message);
+    ws.clients.forEach(function(client) {
+      client.send(message);
+    })
     console.log(message);
   })
 }
