@@ -64,7 +64,3 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use('/', indexRouter)
 app.use('/account', accountRouter)
-
-server.listen(port, function() {
-    console.log(`Server started`);
-});
