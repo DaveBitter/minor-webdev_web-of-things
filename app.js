@@ -9,12 +9,12 @@ const app = express()
 const WebSocket = require('ws')
 const http = require('http')
 
+require('dotenv').config();
 const port = process.env.PORT || 3000;
 
 /* MONGODB CONFIGURATION
 ----------------------------------------- */
 const MongoClient = require("mongodb").MongoClient;
-require('dotenv').config();
 const dbConfig = process.env.MONGODB_URI;
 
 MongoClient.connect(dbConfig, (err, database) => {
