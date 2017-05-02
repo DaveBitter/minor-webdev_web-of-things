@@ -88,24 +88,24 @@ function socketConnectionMade(socket) {
       // find island where user is a junior of
       islandCollection.find({}, {}).toArray(function(err, islands) {
         islands.forEach(function(island) {
+          console.log(island)
           island.juniors.forEach(function(junior) {
-            console.log(junior, user.username)
-            if (junior == user.username) {
+            if (junior == user.name) {
               console.log("user is in this island!")
               console.log('senior is', island.senior)
-              const senior = island.senior
+              const senior = island.senior 
 
               // find user info of senior of island
               userCollection.findOne({
                 username: senior
               }, function(err, senior) {
-                console.log('emitting the color' + user.color + ' to senior ' + senior.boxId)
-                // emitZooi(senior.boxId, user.color)
+                emitZooi(senior.boxId, user.color)
               });
             }
           })
         });
       })
+
     });
   })
 }
