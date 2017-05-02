@@ -63,8 +63,6 @@ const ws = new WebSocket.Server({
   server
 });
 
-ws.broadcast = broadcast;
-
 ws.on('connection', socketConnectionMade);
 
 server.listen(port, () => {
