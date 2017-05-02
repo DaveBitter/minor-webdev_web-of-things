@@ -45,6 +45,8 @@ const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
 
+ws.broadcast = broadcast;
+
 app
   .set('view engine', 'ejs')
   .use(express.static('public'))
@@ -104,7 +106,6 @@ function getSenior(senderId) {
               }, function(err, foundSenior) {
                 console.log(foundSenior)
                 console.log('emitting the color' + user.color + ' to foundSenior ' + foundSenior.boxId)
-                console.log(ws)
                 ws.broadcast(
                   JSON.stringify({
                     color: user.color,
