@@ -27,17 +27,15 @@ MongoClient.connect(dbConfig, (err, database) => {
 /* SESSIONS CONFIGURATION
 ----------------------------------------- */
 app.use(session({
-  secret: "JA1d82JHYF9?nsdfDF635MuHe#ksd",
-  resave: false,
-  saveUninitialized: true
+    secret: "JA1d82JHYF9?nsdfDF635MuHe#ksd",
+    resave: false,
+    saveUninitialized: true
 }));
 
 /* BODY-PARSER FOR READING POST REQUESTS
 ----------------------------------------- */
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 /* Routes
 ----------------------------------------- */
@@ -46,11 +44,11 @@ const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
 
 app
-  .set('view engine', 'ejs')
-  .use(express.static('public'))
-  .use('/', indexRouter)
-  .use('/account', accountRouter)
-  .use('/islands', islandsRouter);
+	.set('view engine', 'ejs')
+	.use(express.static('public'))
+	.use('/', indexRouter)
+	.use('/account', accountRouter)
+	.use('/islands', islandsRouter);
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -59,9 +57,7 @@ app.use('/account', accountRouter)
 
 
 const server = http.createServer(app);
-const ws = new WebSocket.Server({
-  server
-});
+const ws = new WebSocket.Server({server});
 ws.on('connection', socketConnectionMade);
 
 server.listen(port, () => {
@@ -69,19 +65,10 @@ server.listen(port, () => {
 })
 
 function socketConnectionMade(socket) {
-  const userCollection = db.collection('users')
-
   socket.on('message', function(message) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
     console.log(message);
-    const senderId = parseInt(message.data)
-
-    userCollection.findOne({
-      boxId: senderId
-    }, function(err, user) {
-      console.log('message from: ', user)
-    });
   })
 }
