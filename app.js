@@ -59,7 +59,9 @@ app.use('/account', accountRouter)
 
 
 const server = http.createServer(app);
-const ws = new WebSocket.Server({server});
+const ws = new WebSocket.Server({
+  server
+});
 ws.on('connection', socketConnectionMade);
 
 server.listen(port, () => {
