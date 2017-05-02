@@ -70,20 +70,26 @@ server.listen(port, () => {
 
 function socketConnectionMade(socket) {
   const userCollection = db.collection('users')
+  const islandCollection = db.collection('islands')
 
   socket.on('message', function(message) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
-    console.log('sadasdsadsa', message)
     const senderId = message
     // 691873
 
     userCollection.findOne({
       boxId: senderId
     }, function(err, user) {
-      console.log(err)
       console.log('message from: ', user)
+
+      islandCollection.findOne({
+        _id: user.island
+      }, function(err, island) {
+        console.log(err)
+        console.log('island: ', island)
+      });
     });
   })
 }
