@@ -79,18 +79,25 @@ function socketConnectionMade(socket) {
     const senderId = message
     // 691873
 
+    const getIsland = (id) => {
+      islandCollection.findOne({
+        _id: id
+      }, function(err, island) {
+        console.log(err)
+        console.log('island: ', island)
+      });
+    }
+    
     userCollection.findOne({
       boxId: senderId
     }, function(err, user) {
       console.log('message from: ', user)
       const islandId = user.island
 
-      islandCollection.findOne({
-        _id: islandId
-      }, function(err, island) {
-        console.log(err)
-        console.log('island: ', island)
-      });
+      getIsland(islandId)
+
+    
     });
+
   })
 }
