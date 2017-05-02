@@ -79,6 +79,7 @@ function socketConnectionMade(socket) {
 }
 
 function getSenior(senderId) {
+  console.log(senderId)
   const islandCollection = db.collection('islands');
   const userCollection = db.collection('users');
   // find user info based on boxId
