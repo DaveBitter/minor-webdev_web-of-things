@@ -45,8 +45,6 @@ const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
 
-ws.broadcast = broadcast;
-
 app
   .set('view engine', 'ejs')
   .use(express.static('public'))
@@ -64,6 +62,9 @@ const server = http.createServer(app);
 const ws = new WebSocket.Server({
   server
 });
+
+ws.broadcast = broadcast;
+
 ws.on('connection', socketConnectionMade);
 
 server.listen(port, () => {
