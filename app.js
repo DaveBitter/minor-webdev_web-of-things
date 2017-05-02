@@ -75,8 +75,9 @@ function socketConnectionMade(socket) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
-
-    const senderId = parseInt(message)
+    console.log(message);
+    console.log(message.data)
+    const senderId = parseInt(message.data)
 
     userCollection.findOne({
       boxId: senderId
