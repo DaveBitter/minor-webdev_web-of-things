@@ -17,6 +17,32 @@ body {
 	margin: 0;
 }
 
+nav.nav-bar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	// height: 2em;
+	background-color: #fff;
+	width: 100%;
+
+}
+
+/* push div under fixed nav down a bit */
+nav.nav-bar + * {
+	margin-top: 15em;
+}
+
+nav.nav-bar ul {
+	float: right;
+	margin: 0;
+	padding: 1em;
+}
+
+nav.nav-bar li {
+	display: inline;
+	margin-right: 2em;
+}
+
 a {
 	color: deepskyblue;
 }
