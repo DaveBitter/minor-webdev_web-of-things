@@ -107,7 +107,7 @@ function getSenior(senderId) {
                 console.log('emitting the color' + user.color + ' to foundSenior ' + foundSenior.boxId)
 
                 ws.clients.forEach(function(client) {
-                  ws.send(
+                  client.send(
                     JSON.stringify({
                       color: user.color,
                       recipient: foundSenior.boxId
