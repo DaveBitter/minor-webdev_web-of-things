@@ -101,9 +101,10 @@ function getSenior(senderId) {
             // find user info of senior of island
             userCollection.findOne({
               username: senior
-            }, function(err, senior) {
-              console.log('emitting the color' + user.color + ' to senior ' + senior.boxId)
-              // emitZooi(senior.boxId, user.color)
+            }, function(err, foundSenior) {
+              console.log(foundSenior)
+              console.log('emitting the color' + user.color + ' to foundSenior ' + foundSenior.boxId)
+              // emitZooi(foundSenior.boxId, user.color)
             });
           }
         })
