@@ -83,9 +83,10 @@ function socketConnectionMade(socket) {
       boxId: senderId
     }, function(err, user) {
       console.log('message from: ', user)
+      const islandId = user.island
 
       islandCollection.findOne({
-        _id: user.island
+        _id: islandId
       }, function(err, island) {
         console.log(err)
         console.log('island: ', island)
