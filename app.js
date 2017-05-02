@@ -104,6 +104,7 @@ function getSenior(senderId) {
               }, function(err, foundSenior) {
                 console.log(foundSenior)
                 console.log('emitting the color' + user.color + ' to foundSenior ' + foundSenior.boxId)
+                console.log(ws)
                 ws.broadcast(
                   JSON.stringify({
                     color: user.color,
