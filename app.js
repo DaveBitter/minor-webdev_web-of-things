@@ -69,14 +69,19 @@ server.listen(port, () => {
 })
 
 function socketConnectionMade(socket) {
+  const userCollection = db.collection('users')
+  const islandCollection = db.collection('islands')
+
   socket.on('message', function(message) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
-    console.log(message);
+
+    // const senderId = message
+    // getSenior(senderId)
+
   })
 }
-
 
 // function getSenior(senderId) {
 //   // find user info based on boxId
