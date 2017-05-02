@@ -83,7 +83,7 @@ function socketConnectionMade(socket) {
   })
 }
 
-function getSenior(senderId) {
+function getSenior (senderId) {
   // find user info based on boxId
   userCollection.findOne({
     boxId: senderId
