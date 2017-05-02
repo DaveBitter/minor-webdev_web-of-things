@@ -79,7 +79,7 @@ function socketConnectionMade(socket) {
     const senderId = parseInt(message)
 
     userCollection.findOne({
-      boxId: 691873
+      boxId: senderId
     }, function(err, user) {
       console.log('message from: ', user)
     });
