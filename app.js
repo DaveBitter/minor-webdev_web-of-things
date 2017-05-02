@@ -87,24 +87,19 @@ function getSenior(senderId) {
   userCollection.findOne({
     boxId: senderId
   }, function(err, user) {
-    console.log('message from: ', user)
     if (user.type == 'junior') {
       // find island where user is a junior of
       islandCollection.find({}, {}).toArray(function(err, islands) {
         islands.forEach(function(island) {
           island.juniors.forEach(function(junior) {
-            console.log(junior, user.username)
             if (junior == user.username) {
-              console.log("user is in this island!")
-              console.log('senior is', island.senior)
               const senior = island.senior
 
               // find user info of senior of island
               userCollection.findOne({
                 username: senior
               }, function(err, foundSenior) {
-                console.log(foundSenior)
-                console.log('emitting the color' + user.color + ' to foundSenior ' + foundSenior.boxId)
+                console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
 
                 ws.clients.forEach(function(client) {
                   client.send(
