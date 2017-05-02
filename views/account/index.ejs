@@ -5,12 +5,12 @@
 	<div class="form-block fadeIn">
 		<img class="logo-small" src="/img/island.png">
 		<h2><%= data.username %></h2>
-		<form class="form" method="post" action="/account/update">
-			<label>
+		<form class="form" id="create-island-form" method="post" action="/account/update">
+			<label class="radio-list">
 			<input type="radio" name="type" value="junior" <% if(data.type == "junior") { %> checked="true" <% } %> required />
 			Junior
 		</label>
-			<label>
+			<label class="radio-list">
 			<input type="radio" name="type" value="senior" <% if(data.type == "senior") { %> checked="true" <% } %> required />
 			Senior
 		</label>
