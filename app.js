@@ -8,6 +8,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const WebSocket = require('ws')
 const http = require('http')
+const hexRgb = require('hex-rgb')
+
 
 require('dotenv').config();
 const port = process.env.PORT || 3000;
@@ -104,7 +106,7 @@ function getSenior(senderId) {
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
-                      color: user.color,
+                      color: hexRgb(user.color),
                       recipient: foundSenior.boxId
                     })
                   );
