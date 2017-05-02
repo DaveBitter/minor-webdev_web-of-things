@@ -2,6 +2,7 @@
 ## Core functionality
 - [x] Logins
 - [x] User profiles/settings
+- [x] Island profiles/settings
 - [ ] Senior or Junior detection
 - [ ] Send light from Junior to Senior
 - [ ] Send confirmation/deny from Senior to Junior
