@@ -3,7 +3,7 @@
 <div class="form-block fadeIn">
 	<img class="logo-small" src="/img/island.png">
 	<h2>Edit <%= island.name %></h2>
-	<form class="form" method="post" action="/islands/edit/<%= island.name %>">
+	<form id="create-island-form" class="form" method="post" action="/islands/edit/<%= island.name %>">
 	<label>
 		Name
 		<input type="text" name="name" value=<%= island.description %> required readonly />
@@ -14,14 +14,14 @@
 	</label>
 	<% for(i=0; i<island.users.length; i++) {
 		if(island.users[i].type == "senior") { %>
-			<label>
+			<label class="radio-list">
 				<%= island.users[i].username + " (" + island.users[i].type + ")" %>
 				<input type="radio" name="senior" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
 			</label>
 	<% }} %>
 	<% for(i=0; i<island.users.length; i++) {
 		if(island.users[i].type == "junior") {%>
-		<label>
+		<label class="checkbox-list">
 			<%= island.users[i].username %>
 			<input type="checkbox" name="juniors" <% if(island.users[i].selected == true) { %> checked="true" <% } %> value="<%= island.users[i].username %>">
 		</label>

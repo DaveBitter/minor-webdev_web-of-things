@@ -29,7 +29,7 @@ nav.nav-bar {
 
 /* push div under fixed nav down a bit */
 nav.nav-bar + * {
-	margin-top: 15em;
+	margin-top: 10em;
 }
 
 nav.nav-bar ul {
