@@ -121,7 +121,7 @@ function handleMessage(message) {
                 console.log(hexRgb(user.color))
                 let rgbColor = ''
                 hexRgb(user.color).forEach((v) => {
-                  rgbColor.push(v + ',')
+                  rgbColor+= v + ','
                 })
                 ws.clients.forEach(function(client) {
                   client.send(
