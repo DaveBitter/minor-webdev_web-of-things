@@ -126,6 +126,7 @@ function handleMessage(message) {
                       g: hexRgb(user.color)[1],
                       b: hexRgb(user.color)[2],
                       recipient: foundSenior.boxId
+                      sender: boxId
                     })
                   );
                 })
