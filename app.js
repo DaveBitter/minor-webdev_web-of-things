@@ -121,7 +121,9 @@ function handleMessage(message) {
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
-                      color: hexRgb(user.color).join(),
+                      r: hexRgb(user.color)[0],
+                      g: hexRgb(user.color)[1],
+                      b: hexRgb(user.color)[2],
                       recipient: foundSenior.boxId
                     })
                   );
