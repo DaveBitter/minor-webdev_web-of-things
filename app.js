@@ -80,7 +80,7 @@ function socketConnectionMade(socket) {
       client.send(message);
     })
     console.log(message);
-    handleMessage(message)
+    handleMessage(JSON.parse(message))
   })
 }
 
