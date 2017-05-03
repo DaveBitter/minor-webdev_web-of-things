@@ -101,6 +101,7 @@ function handleMessage(message) {
   const userCollection = db.collection('users');
   // find user info based on boxId
   const boxId = message.boxId
+  console.log(boxId)
   userCollection.findOne({
     boxId: boxId
   }, function(err, user) {
