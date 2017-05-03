@@ -120,10 +120,12 @@ function handleMessage(message) {
                 console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
 
                 ws.clients.forEach(function(client) {
-                  client.send({
-                    color: hexRgb(user.color),
-                    recipient: foundSenior.boxId
-                  });
+                  client.send(
+                    JSON.stringify({
+                      color: hexRgb(user.color),
+                      recipient: foundSenior.boxId
+                    })
+                  );
                 })
               });
             }
