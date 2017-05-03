@@ -117,8 +117,7 @@ function handleMessage(message) {
               userCollection.findOne({
                 username: senior
               }, function(err, foundSenior) {
-                console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
-                console.log(hexRgb(user.color))
+                console.log(hexRgb(user.color).join())
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
