@@ -46,18 +46,21 @@ app.use(bodyParser.urlencoded({
 const indexRouter = require('./routes/index.js')
 const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
+const dashboardRouter = require('./routes/dashboard.js');
 
 app
   .set('view engine', 'ejs')
   .use(express.static('public'))
   .use('/', indexRouter)
   .use('/account', accountRouter)
-  .use('/islands', islandsRouter);
+  .use('/islands', islandsRouter)
+  .use('/dashboard', dashboardRouter)
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use('/', indexRouter)
 app.use('/account', accountRouter)
+
 
 
 const server = http.createServer(app);
