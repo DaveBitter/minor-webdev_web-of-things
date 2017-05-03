@@ -100,7 +100,7 @@ function handleMessage(message) {
   const islandCollection = db.collection('islands');
   const userCollection = db.collection('users');
   // find user info based on boxId
-  const boxId = message.boxId
+  const boxId = JSON.stringify(message.boxId)
   userCollection.findOne({
     boxId: boxId
   }, function(err, user) {
