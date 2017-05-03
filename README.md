@@ -11,6 +11,12 @@ All exercise folders are standalone projects and work as such. You can navigate 
 ## Issues
 We highly encourage adding issues to this repo in the case of finding one. We are always up for improving our code.
 
+## Features
+* Client side application for user creation/login and storing user settings (e.g. box id and color)
+* Server side application for handling logic (e.g. handling event of message from senior to junior and vice versa)
+* Websockets to connect the client, server and NodeMCU to each other
+* Custom firmware on NodeMCU for handling socket events
+
 ## Getting started
 ### Clone this repo, duh
     git clone https://github.com/DaveBitter/minor-webdev_web-of-thingsreal-time-web.git
