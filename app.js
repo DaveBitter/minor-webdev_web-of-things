@@ -119,10 +119,14 @@ function handleMessage(message) {
               }, function(err, foundSenior) {
                 console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
                 console.log(hexRgb(user.color))
+                let rgbColor = ''
+                hexRgb(user.color).forEach((v) => {
+                  rgbColor.push(v + ',')
+                })
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
-                      color: hexRgb(user.color),
+                      color: rgbColor,
                       recipient: foundSenior.boxId
                     })
                   );
@@ -146,3 +150,5 @@ function handleMessage(message) {
     }
   });
 }
+
+'255,255,255'
