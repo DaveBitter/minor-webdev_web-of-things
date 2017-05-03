@@ -125,7 +125,7 @@ function handleMessage(message) {
                       r: hexRgb(user.color)[0],
                       g: hexRgb(user.color)[1],
                       b: hexRgb(user.color)[2],
-                      recipient: foundSenior.boxId
+                      recipient: foundSenior.boxId,
                       sender: boxId
                     })
                   );
