@@ -80,17 +80,29 @@ function socketConnectionMade(socket) {
       client.send(message);
     })
     console.log(message);
-    getSenior(message)
+    handleMessage(message)
   })
 }
 
-function getSenior(senderId) {
-  console.log(senderId)
+function handleMessage(message) {
+  // what i want message to be from junior
+  // {
+  //   boxId: 12345
+  // }
+
+  // what i want message to be from senior
+  // {
+  //   boxId: 12345,
+  //   recipient: 45678,
+  //   color: #009900
+  // }
+
   const islandCollection = db.collection('islands');
   const userCollection = db.collection('users');
   // find user info based on boxId
+  const boxId = message.boxId
   userCollection.findOne({
-    boxId: senderId
+    boxId: boxId
   }, function(err, user) {
     if (user.type == 'junior') {
       // find island where user is a junior of
@@ -118,6 +130,17 @@ function getSenior(senderId) {
             }
           })
         });
+      })
+    }
+    // send response from senior to clients
+    if (user.type == 'senior') {
+      ws.clients.forEach(function(client) {
+        client.send(
+          JSON.stringify({
+            color: hexRgb(message.color),
+            recipient: message.recipient
+          })
+        );
       })
     }
   });
