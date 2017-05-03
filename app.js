@@ -8,6 +8,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const WebSocket = require('ws')
 const http = require('http')
+const hexRgb = require('hex-rgb')
+
 
 require('dotenv').config();
 const port = process.env.PORT || 3000;
@@ -27,15 +29,17 @@ MongoClient.connect(dbConfig, (err, database) => {
 /* SESSIONS CONFIGURATION
 ----------------------------------------- */
 app.use(session({
-    secret: "JA1d82JHYF9?nsdfDF635MuHe#ksd",
-    resave: false,
-    saveUninitialized: true
+  secret: "JA1d82JHYF9?nsdfDF635MuHe#ksd",
+  resave: false,
+  saveUninitialized: true
 }));
 
 /* BODY-PARSER FOR READING POST REQUESTS
 ----------------------------------------- */
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 /* Routes
 ----------------------------------------- */
@@ -44,11 +48,11 @@ const accountRouter = require('./routes/account.js')
 const islandsRouter = require('./routes/islands.js')
 
 app
-	.set('view engine', 'ejs')
-	.use(express.static('public'))
-	.use('/', indexRouter)
-	.use('/account', accountRouter)
-	.use('/islands', islandsRouter);
+  .set('view engine', 'ejs')
+  .use(express.static('public'))
+  .use('/', indexRouter)
+  .use('/account', accountRouter)
+  .use('/islands', islandsRouter);
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -57,7 +61,10 @@ app.use('/account', accountRouter)
 
 
 const server = http.createServer(app);
-const ws = new WebSocket.Server({server});
+const ws = new WebSocket.Server({
+  server
+});
+
 ws.on('connection', socketConnectionMade);
 
 server.listen(port, () => {
@@ -70,5 +77,45 @@ function socketConnectionMade(socket) {
       client.send(message);
     })
     console.log(message);
+    getSenior(message)
   })
+}
+
+function getSenior(senderId) {
+  console.log(senderId)
+  const islandCollection = db.collection('islands');
+  const userCollection = db.collection('users');
+  // find user info based on boxId
+  userCollection.findOne({
+    boxId: senderId
+  }, function(err, user) {
+    if (user.type == 'junior') {
+      // find island where user is a junior of
+      islandCollection.find({}, {}).toArray(function(err, islands) {
+        islands.forEach(function(island) {
+          island.juniors.forEach(function(junior) {
+            if (junior == user.username) {
+              const senior = island.senior
+
+              // find user info of senior of island
+              userCollection.findOne({
+                username: senior
+              }, function(err, foundSenior) {
+                console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
+
+                ws.clients.forEach(function(client) {
+                  client.send(
+                    JSON.stringify({
+                      color: hexRgb(user.color),
+                      recipient: foundSenior.boxId
+                    })
+                  );
+                })
+              });
+            }
+          })
+        });
+      })
+    }
+  });
 }
