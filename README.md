@@ -3,6 +3,8 @@ Dave Bitter | Camille Niessen | Zishan K. Pasha | Tristan Jacobs | Ioannis Kapri
 
     V 1.0.0
 
+ ![Islands app](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/hero.png)
+
 ## General
 This repository holds the seperate exercises for the course 'Web Of Things', part of the minor "Webdevelopment" at the [HvA](http://www.hva.nl/)
 
@@ -28,7 +30,7 @@ We highly encourage adding issues to this repo in the case of finding one. We ar
 ### Start up the server
 When you run this command, changes in serverside JS files will be watched and the server will restart automatically, changes in clientside JS files will be watched and browserified and the server will be restarted.
 
-    npm start
+    npm run startDev
 
 ### Additional commands
 Browserify clientside JS
@@ -50,7 +52,7 @@ You can view the To Do's in [todo.md](todo.md).
 * Implement dashboard for queue system.
 
 Possible Example
-[![Example Dashboard](https://s8.postimg.org/e7mttllit/queue_dashboard.jpg)](https://postimg.org/image/4zulcwegh/)
+![Example Dashboard](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/queue_dashboard.jpg)
 
 ## License
 [MIT](LICENSE.md)
