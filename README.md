@@ -39,9 +39,11 @@ The Senior can then respond with a color signal indicating whether or not he/she
 
 ### Flow
 This is the flow as it stands now. A Junior employee can send requests for help to senior employees and the senior can either send a green signal or a red signal, depending on their availability.
+
 ![Current flow of app](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/flow1.jpg)
 
 This is the flow as it would stand with a working queue system. If a Senior employee sends a red signal then the Junior is added to the queue list. If he sends a green signal then the Junior is helped and removed from the queue list.
+
 ![Preferred flow of app](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/flow2.jpg)
 
 ### Known Issues
