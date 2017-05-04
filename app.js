@@ -79,7 +79,6 @@ function socketConnectionMade(socket) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
-    console.log(message);
     handleMessage(JSON.parse(message))
   })
 }
@@ -94,6 +93,7 @@ function handleMessage(message) {
   userCollection.findOne({
     boxId: boxId
   }, function(err, user) {    
+    'found user'
     if (user.type == 'junior') {
       console.log('type = junior')
       lastSender = user
@@ -129,7 +129,6 @@ function handleMessage(message) {
     // send response from senior to client
     if (user.type == 'senior') { 
     console.log('type = senior') 
-    console.log('last sender was', lastSender)                      
       ws.clients.forEach(function(client) {
         client.send(
           JSON.stringify({
