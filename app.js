@@ -129,6 +129,10 @@ function handleMessage(message) {
     }
     // send response from senior to client
     if (user.type == 'senior') {
+      console.log(message.r)
+      console.log(message.g)
+      console.log(message.b)
+      console.log(lastSender.boxId)
       ws.clients.forEach(function(client) {
         client.send(
           JSON.stringify({
