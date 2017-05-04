@@ -84,19 +84,9 @@ function socketConnectionMade(socket) {
   })
 }
 
+let lastSender = ''
+
 function handleMessage(message) {
-  // what i want message to be from junior
-  // {
-  //   boxId: 12345
-  // }
-
-  // what i want message to be from senior
-  // {
-  //   boxId: 12345,
-  //   recipient: 45678,
-  //   color: #009900
-  // }
-
   const islandCollection = db.collection('islands');
   const userCollection = db.collection('users');
   // find user info based on boxId
@@ -106,6 +96,7 @@ function handleMessage(message) {
   }, function(err, user) {
     console.log('userrrrrr', user)
     if (user.type == 'junior') {
+      lastSender = user
       // find island where user is a junior of
       islandCollection.find({}, {}).toArray(function(err, islands) {
         islands.forEach(function(island) {
@@ -126,7 +117,6 @@ function handleMessage(message) {
                       g: hexRgb(user.color)[1],
                       b: hexRgb(user.color)[2],
                       recipient: foundSenior.boxId,
-                      sender: boxId
                     })
                   );
                 })
@@ -136,13 +126,16 @@ function handleMessage(message) {
         });
       })
     }
-    // send response from senior to clients
+    // send response from senior to client
     if (user.type == 'senior') {
       ws.clients.forEach(function(client) {
         client.send(
           JSON.stringify({
-            color: hexRgb(message.color),
-            recipient: message.recipient
+            type: 'changecolor',
+            r: hexRgb(message.r),
+            g: hexRgb(message.g),
+            b: hexRgb(message.b),
+            recipient: lastSender.boxId
           })
         );
       })
