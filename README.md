@@ -18,6 +18,8 @@ Islands allows all people in a specific workgroup to create an 'Island', a digit
 By using the IslandBox a color signal can be sent to the senior developer whenever a Junior requires help of has a question.
 The Senior can then respond with a color signal indicating whether or not he/she is available. Juniors and Seniors choose a color representing themselves for identification purposes. 
 
+![Islands](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/islands.jpg)
+
 #### Example User Story
 1. It's 9:31 in the morning. The 3 juniors and senior of CodeCowboys' development section arrive at the office.
 2. They take to their desks getting ready for work.
@@ -34,6 +36,13 @@ The Senior can then respond with a color signal indicating whether or not he/she
 * Server side application for handling logic (e.g. handling event of message from senior to junior and vice versa)
 * Websockets to connect the client, server and NodeMCU to each other
 * Custom firmware on NodeMCU for handling socket events
+
+### Flow
+This is the flow as it stands now. A Junior employee can send requests for help to senior employees and the senior can either send a green signal or a red signal, depending on their availability.
+![Current flow of app](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/flow1.jpg)
+
+This is the flow as it would stand with a working queue system. If a Senior employee sends a red signal then the Junior is added to the queue list. If he sends a green signal then the Junior is helped and removed from the queue list.
+![Preferred flow of app](https://raw.githubusercontent.com/DaveBitter/minor-webdev_web-of-things/master/readme-img/flow2.jpg)
 
 ### Known Issues
 
