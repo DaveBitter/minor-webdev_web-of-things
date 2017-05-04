@@ -137,9 +137,9 @@ function handleMessage(message) {
         client.send(
           JSON.stringify({
             type: 'changecolor',
-            r: hexRgb(message.r),
-            g: hexRgb(message.g),
-            b: hexRgb(message.b),
+            r: hexRgb(JSON.stringify(message.r)),
+            g: hexRgb(JSON.stringify(message.g)),
+            b: hexRgb(JSON.stringify(message.b)),
             recipient: lastSender.boxId,
             recipientType: 'junior'
           })
