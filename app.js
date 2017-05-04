@@ -117,6 +117,7 @@ function handleMessage(message) {
                       g: hexRgb(user.color)[1],
                       b: hexRgb(user.color)[2],
                       recipient: foundSenior.boxId,
+                      recipientType: 'senior'
                     })
                   );
                 })
@@ -135,7 +136,8 @@ function handleMessage(message) {
             r: hexRgb(message.r),
             g: hexRgb(message.g),
             b: hexRgb(message.b),
-            recipient: lastSender.boxId
+            recipient: lastSender.boxId,
+            recipientType: 'junior'
           })
         );
       })
