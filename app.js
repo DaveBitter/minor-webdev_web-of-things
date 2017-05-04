@@ -93,9 +93,9 @@ function handleMessage(message) {
   const boxId = JSON.stringify(message.boxId)
   userCollection.findOne({
     boxId: boxId
-  }, function(err, user) {
-    console.log('userrrrrr', user)
+  }, function(err, user) {    
     if (user.type == 'junior') {
+      console.log('type = junior')
       lastSender = user
       // find island where user is a junior of
       islandCollection.find({}, {}).toArray(function(err, islands) {
@@ -107,8 +107,7 @@ function handleMessage(message) {
               // find user info of senior of island
               userCollection.findOne({
                 username: senior
-              }, function(err, foundSenior) {
-                console.log(hexRgb(user.color).join())
+              }, function(err, foundSenior) {                
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
@@ -128,11 +127,9 @@ function handleMessage(message) {
       })
     }
     // send response from senior to client
-    if (user.type == 'senior') {
-      console.log(message.r)
-      console.log(message.g)
-      console.log(message.b)
-      console.log(lastSender.boxId)
+    if (user.type == 'senior') { 
+    console.log('type = senior') 
+    console.log('last sender was', lastSender)                      
       ws.clients.forEach(function(client) {
         client.send(
           JSON.stringify({
