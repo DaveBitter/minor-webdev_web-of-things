@@ -79,32 +79,24 @@ function socketConnectionMade(socket) {
     ws.clients.forEach(function(client) {
       client.send(message);
     })
-    console.log(message);
-    handleMessage(message)
+    handleMessage(JSON.parse(message))
   })
 }
 
+let lastSender = ''
+
 function handleMessage(message) {
-  // what i want message to be from junior
-  // {
-  //   boxId: 12345
-  // }
-
-  // what i want message to be from senior
-  // {
-  //   boxId: 12345,
-  //   recipient: 45678,
-  //   color: #009900
-  // }
-
   const islandCollection = db.collection('islands');
   const userCollection = db.collection('users');
   // find user info based on boxId
-  const boxId = message.boxId
+  const boxId = JSON.stringify(message.boxId)
   userCollection.findOne({
     boxId: boxId
-  }, function(err, user) {
+  }, function(err, user) {    
+    'found user'
     if (user.type == 'junior') {
+      console.log('type = junior')
+      lastSender = user
       // find island where user is a junior of
       islandCollection.find({}, {}).toArray(function(err, islands) {
         islands.forEach(function(island) {
@@ -115,14 +107,16 @@ function handleMessage(message) {
               // find user info of senior of island
               userCollection.findOne({
                 username: senior
-              }, function(err, foundSenior) {
-                console.log('going to send ' + user.color + ' and ' + foundSenior.boxId + 'to all sockets')
-
+              }, function(err, foundSenior) {                
                 ws.clients.forEach(function(client) {
                   client.send(
                     JSON.stringify({
-                      color: hexRgb(user.color),
-                      recipient: foundSenior.boxId
+                      type: 'changecolor',
+                      r: hexRgb(user.color)[0],
+                      g: hexRgb(user.color)[1],
+                      b: hexRgb(user.color)[2],
+                      recipient: foundSenior.boxId,
+                      recipientType: 'senior'
                     })
                   );
                 })
@@ -132,13 +126,18 @@ function handleMessage(message) {
         });
       })
     }
-    // send response from senior to clients
-    if (user.type == 'senior') {
+    // send response from senior to client
+    if (user.type == 'senior') { 
+    console.log('type = senior') 
       ws.clients.forEach(function(client) {
         client.send(
           JSON.stringify({
-            color: hexRgb(message.color),
-            recipient: message.recipient
+            type: 'changecolor',
+            r: message.r,
+            g: message.g,
+            b: message.b,
+            recipient: lastSender.boxId,
+            recipientType: 'junior'
           })
         );
       })
